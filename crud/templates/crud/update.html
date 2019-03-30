@@ -1,0 +1,40 @@
+{% extends 'home.html' %} 
+
+{% block content %}
+<div class="text-center">
+  <div class="box span12">
+    <div class="box-header" data-original-title>
+      <h2>CRUD</h2>
+      {% if msg %}
+      <h3>{{msg}}</h3>
+      <br> {% endif %}
+    </div>
+    <form class="form-horizontal" method="POST" action="{% url 'edit_data' category.id %}">
+      {% csrf_token %}
+      <fieldset>
+       <div class="control-group">
+          <label class="control-label" for="typeahead"> Category Name </label>
+          <div class="controls">
+            <input type="text" class="span6 typeahead" id="typeahead" name="category_name" value="{{category.category_name}}">
+
+          </div>
+        </div>
+        <div class="control-group hidden-phone">
+          <label class="control-label" for="textarea2">Category Description</label>
+          <div class="controls">
+            <textarea class="cleditor" id="textarea2" rows="3" name="category_description">
+            {{category.category_description}}
+            </textarea>
+          </div>
+        </div>
+        <br>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+      </fieldset>
+    </form>
+
+  </div>
+</div>
+<!--/span-->
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+        <thead>
+            <tr>
+                
+                <th>ID</th>
+                <th>Category Name</th>
+                <th>Category Descripton</th>
+                <th>Actions</th>
+            </tr>
+        </thead> 
+        
+      {% for category in categories %}
+      
+        <tbody>
+          <tr>
+              
+              <td>{{ category.id }}</td>
+              <td class="center">{{ category.category_name }}</td>
+              <td class="center">{{ category.category_description }}</td>
+
+              <td class="center">
+                <a class="btn btn-info" href="{% url 'update_data' category.id %}">
+                    edit  
+                </a>
+                <a class="btn btn-danger" href="{% url 'delete_data' category.id %}">
+                    delete 
+                </a>
+            </td>
+          </tr>				
+        </tbody>
+     {% endfor %}
+    </table>     
+</div>
+       
+{% endblock %}
